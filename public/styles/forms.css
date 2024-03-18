@@ -24,7 +24,7 @@ select {
 
 input:focus,
 textarea:focus {
-  background-color: rgb(237, 228, 255);
+  background-color: #e6e7e3;
 }
 
 input,

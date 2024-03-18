@@ -4,6 +4,7 @@ const db = require('../data/database');
 
 const router = express.Router();
 
+
 router.get('/', function (req, res) {
   res.redirect('/posts');
 });
@@ -92,13 +93,9 @@ router.post('/posts/:id/edit', async function (req, res) {
   res.redirect('/posts');
 });
 
-router.post('/posts/:id/delete', function(req, res) {
-  db.query('DELETE FROM posts WHERE id = ?', [req.params.id], function(err) {
-    if (err) {
-      console.log(err);
-    }
-    res.redirect('/posts');
-  });
+router.post('/posts/:id/delete', async function(req, res) {
+  await db.query('DELETE FROM posts WHERE id = ?', [req.params.id]);
+  res.redirect('/posts');
 });
 
 module.exports = router;
